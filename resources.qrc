@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/icons" >
+        <file>icons/accents.png</file>
+        <file>icons/dark2.png</file>
+        <file>icons/paired.png</file>
+        <file>icons/pastel1.png</file>
+        <file>icons/pastel2.png</file>
+        <file>icons/set1.png</file>
+        <file>icons/set2.png</file>
+        <file>icons/set3.png</file>
+    </qresource>
+</RCC>
