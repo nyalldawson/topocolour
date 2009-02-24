@@ -5,7 +5,6 @@ from PyQt4.QtGui import *
 
 from chooser import Ui_Dialog
 
-import utils
 
 LAYER = 1002
 FIELD = 1003
@@ -23,7 +22,7 @@ class FieldItem(QTreeWidgetItem):
         self.field = field
     
 class Chooser(QDialog, Ui_Dialog):
-    def __init__(self, mapCanvas):
+    def __init__(self, layers):
         self.clicked = None
         QDialog.__init__(self)
         self.setupUi(self)
@@ -31,7 +30,7 @@ class Chooser(QDialog, Ui_Dialog):
         self.buttonBox.button(QDialogButtonBox.Ok).setEnabled(False)
 
         layerFieldsTree = self.layerFields
-        layers = utils.polygonLayers(mapCanvas)
+
         self.items = []
         for layer in layers:
             item = LayerItem(None, layer)
