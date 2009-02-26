@@ -23,8 +23,8 @@ class FieldItem(QTreeWidgetItem):
     
 class Chooser(QDialog, Ui_Dialog):
     def __init__(self, layers):
-        self.clicked = None
         QDialog.__init__(self)
+        self.clicked = None
         self.setupUi(self)
 
         self.buttonBox.button(QDialogButtonBox.Ok).setEnabled(False)

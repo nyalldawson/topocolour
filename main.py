@@ -22,6 +22,9 @@ from qgis.core import *
 from qgis.gui import *
 
 import resources_rc
+import getLayerField
+import mainDialog
+import utils
 
 class MainPlugin(object):
   def __init__(self, iface):
@@ -46,6 +49,19 @@ class MainPlugin(object):
     # choose a layer of polygons
     # choose an attribute
     # fire up the main dialog
+
+    layers = utils.polygonLayers(self.iface.mapCanvas())
+    chooser = getLayerField.Chooser(layers)
+    status = chooser.exec_()
+    if not status:
+      return
+    print chooser.clicked
+
+    # compute topology
+
+    main = mainDialog.Form(chooser.clicked.layer, chooser.clicked.fieldIndex, chooser.clicked.field)
+    main.exec_()
+    
     pass
 
     
