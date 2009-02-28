@@ -27,11 +27,15 @@ class Form(QDialog,Ui_Dialog):
         if not self.topology:
             return None
         else:
-            self.topology = self.topology.makefull()
+            self.graphDump.setText(self.topology.dump())
+            #self.topology = self.topology.makefull()
             QDialog.exec_(self)
 
     def doSaveDotFile(self):
-        print "TODO save dot file"
+        f=QFileDialog.getSaveFileName(self,"Save DOT file","","DOT Files (*.dot)")
+        if f:
+            self.topology.writeDot(self.layer.name(),f)
+
 
     def doComputeColouring(self):
         self.gColouring = colouring.greedy(self.topology)

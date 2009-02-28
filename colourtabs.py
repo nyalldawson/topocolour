@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'colourtabs.ui'
 #
-# Created: Fri Feb 27 23:20:00 2009
+# Created: Sat Feb 28 15:53:05 2009
 #      by: PyQt4 UI code generator 4.3.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,7 +12,7 @@ from PyQt4 import QtCore, QtGui
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(QtCore.QSize(QtCore.QRect(0,0,418,490).size()).expandedTo(Dialog.minimumSizeHint()))
+        Dialog.resize(QtCore.QSize(QtCore.QRect(0,0,397,565).size()).expandedTo(Dialog.minimumSizeHint()))
 
         self.vboxlayout = QtGui.QVBoxLayout(Dialog)
         self.vboxlayout.setObjectName("vboxlayout")
@@ -85,14 +85,23 @@ class Ui_Dialog(object):
         self.layerCountLabel.setObjectName("layerCountLabel")
         self.vboxlayout1.addWidget(self.layerCountLabel)
 
-        spacerItem2 = QtGui.QSpacerItem(20,40,QtGui.QSizePolicy.Minimum,QtGui.QSizePolicy.Expanding)
-        self.vboxlayout1.addItem(spacerItem2)
+        self.groupBox = QtGui.QGroupBox(self.colouringTab)
+        self.groupBox.setObjectName("groupBox")
+
+        self.vboxlayout2 = QtGui.QVBoxLayout(self.groupBox)
+        self.vboxlayout2.setObjectName("vboxlayout2")
+
+        self.graphDump = QtGui.QTextEdit(self.groupBox)
+        self.graphDump.setReadOnly(True)
+        self.graphDump.setObjectName("graphDump")
+        self.vboxlayout2.addWidget(self.graphDump)
+        self.vboxlayout1.addWidget(self.groupBox)
 
         self.hboxlayout3 = QtGui.QHBoxLayout()
         self.hboxlayout3.setObjectName("hboxlayout3")
 
-        spacerItem3 = QtGui.QSpacerItem(40,20,QtGui.QSizePolicy.Expanding,QtGui.QSizePolicy.Minimum)
-        self.hboxlayout3.addItem(spacerItem3)
+        spacerItem2 = QtGui.QSpacerItem(40,20,QtGui.QSizePolicy.Expanding,QtGui.QSizePolicy.Minimum)
+        self.hboxlayout3.addItem(spacerItem2)
 
         self.nowDoStyle = QtGui.QPushButton(self.colouringTab)
         self.nowDoStyle.setObjectName("nowDoStyle")
@@ -104,14 +113,14 @@ class Ui_Dialog(object):
         self.layerStyleTab.setEnabled(True)
         self.layerStyleTab.setObjectName("layerStyleTab")
 
-        self.vboxlayout2 = QtGui.QVBoxLayout(self.layerStyleTab)
-        self.vboxlayout2.setObjectName("vboxlayout2")
+        self.vboxlayout3 = QtGui.QVBoxLayout(self.layerStyleTab)
+        self.vboxlayout3.setObjectName("vboxlayout3")
 
         self.groupBox_2 = QtGui.QGroupBox(self.layerStyleTab)
         self.groupBox_2.setObjectName("groupBox_2")
 
-        self.vboxlayout3 = QtGui.QVBoxLayout(self.groupBox_2)
-        self.vboxlayout3.setObjectName("vboxlayout3")
+        self.vboxlayout4 = QtGui.QVBoxLayout(self.groupBox_2)
+        self.vboxlayout4.setObjectName("vboxlayout4")
 
         self.hboxlayout4 = QtGui.QHBoxLayout()
         self.hboxlayout4.setObjectName("hboxlayout4")
@@ -123,7 +132,7 @@ class Ui_Dialog(object):
         self.colourScheme = QtGui.QComboBox(self.groupBox_2)
         self.colourScheme.setObjectName("colourScheme")
         self.hboxlayout4.addWidget(self.colourScheme)
-        self.vboxlayout3.addLayout(self.hboxlayout4)
+        self.vboxlayout4.addLayout(self.hboxlayout4)
 
         self.hboxlayout5 = QtGui.QHBoxLayout()
         self.hboxlayout5.setObjectName("hboxlayout5")
@@ -135,7 +144,7 @@ class Ui_Dialog(object):
         self.lineType = QtGui.QComboBox(self.groupBox_2)
         self.lineType.setObjectName("lineType")
         self.hboxlayout5.addWidget(self.lineType)
-        self.vboxlayout3.addLayout(self.hboxlayout5)
+        self.vboxlayout4.addLayout(self.hboxlayout5)
 
         self.hboxlayout6 = QtGui.QHBoxLayout()
         self.hboxlayout6.setObjectName("hboxlayout6")
@@ -147,7 +156,7 @@ class Ui_Dialog(object):
         self.lineWidth = QtGui.QDoubleSpinBox(self.groupBox_2)
         self.lineWidth.setObjectName("lineWidth")
         self.hboxlayout6.addWidget(self.lineWidth)
-        self.vboxlayout3.addLayout(self.hboxlayout6)
+        self.vboxlayout4.addLayout(self.hboxlayout6)
 
         self.hboxlayout7 = QtGui.QHBoxLayout()
         self.hboxlayout7.setObjectName("hboxlayout7")
@@ -160,17 +169,17 @@ class Ui_Dialog(object):
         self.lineColour.setFlat(False)
         self.lineColour.setObjectName("lineColour")
         self.hboxlayout7.addWidget(self.lineColour)
-        self.vboxlayout3.addLayout(self.hboxlayout7)
-        self.vboxlayout2.addWidget(self.groupBox_2)
+        self.vboxlayout4.addLayout(self.hboxlayout7)
+        self.vboxlayout3.addWidget(self.groupBox_2)
 
-        spacerItem4 = QtGui.QSpacerItem(20,40,QtGui.QSizePolicy.Minimum,QtGui.QSizePolicy.Expanding)
-        self.vboxlayout2.addItem(spacerItem4)
+        spacerItem3 = QtGui.QSpacerItem(20,40,QtGui.QSizePolicy.Minimum,QtGui.QSizePolicy.Expanding)
+        self.vboxlayout3.addItem(spacerItem3)
 
         self.hboxlayout8 = QtGui.QHBoxLayout()
         self.hboxlayout8.setObjectName("hboxlayout8")
 
-        spacerItem5 = QtGui.QSpacerItem(40,20,QtGui.QSizePolicy.Expanding,QtGui.QSizePolicy.Minimum)
-        self.hboxlayout8.addItem(spacerItem5)
+        spacerItem4 = QtGui.QSpacerItem(40,20,QtGui.QSizePolicy.Expanding,QtGui.QSizePolicy.Minimum)
+        self.hboxlayout8.addItem(spacerItem4)
 
         self.applyStyle = QtGui.QPushButton(self.layerStyleTab)
         self.applyStyle.setObjectName("applyStyle")
@@ -179,13 +188,13 @@ class Ui_Dialog(object):
         self.saveStyle = QtGui.QPushButton(self.layerStyleTab)
         self.saveStyle.setObjectName("saveStyle")
         self.hboxlayout8.addWidget(self.saveStyle)
-        self.vboxlayout2.addLayout(self.hboxlayout8)
+        self.vboxlayout3.addLayout(self.hboxlayout8)
 
         self.hboxlayout9 = QtGui.QHBoxLayout()
         self.hboxlayout9.setObjectName("hboxlayout9")
 
-        spacerItem6 = QtGui.QSpacerItem(40,14,QtGui.QSizePolicy.Expanding,QtGui.QSizePolicy.Minimum)
-        self.hboxlayout9.addItem(spacerItem6)
+        spacerItem5 = QtGui.QSpacerItem(40,14,QtGui.QSizePolicy.Expanding,QtGui.QSizePolicy.Minimum)
+        self.hboxlayout9.addItem(spacerItem5)
 
         self.brewerInfo = QtGui.QPushButton(self.layerStyleTab)
 
@@ -201,7 +210,7 @@ class Ui_Dialog(object):
         self.brewerInfo.setFont(font)
         self.brewerInfo.setObjectName("brewerInfo")
         self.hboxlayout9.addWidget(self.brewerInfo)
-        self.vboxlayout2.addLayout(self.hboxlayout9)
+        self.vboxlayout3.addLayout(self.hboxlayout9)
         self.processTabs.addTab(self.layerStyleTab,"")
         self.vboxlayout.addWidget(self.processTabs)
 
@@ -245,6 +254,7 @@ class Ui_Dialog(object):
         self.saveDotFile.setText(QtGui.QApplication.translate("Dialog", "Save DOT File", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("Dialog", "Select Algorithm:", None, QtGui.QApplication.UnicodeUTF8))
         self.computeColouring.setText(QtGui.QApplication.translate("Dialog", "Compute Colouring", None, QtGui.QApplication.UnicodeUTF8))
+        self.groupBox.setTitle(QtGui.QApplication.translate("Dialog", "Adjacencies", None, QtGui.QApplication.UnicodeUTF8))
         self.nowDoStyle.setText(QtGui.QApplication.translate("Dialog", "Now style the layer...", None, QtGui.QApplication.UnicodeUTF8))
         self.processTabs.setTabText(self.processTabs.indexOf(self.colouringTab), QtGui.QApplication.translate("Dialog", "Graph Colouring", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox_2.setTitle(QtGui.QApplication.translate("Dialog", "Style", None, QtGui.QApplication.UnicodeUTF8))

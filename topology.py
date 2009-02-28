@@ -14,7 +14,7 @@ def compute(layer,fieldNum):
     f1 = QgsFeature()
     f2 = QgsFeature()
 
-    s=Graph()
+    s=Graph(sorted = False)
 
     nFeatures = layer.featureCount()
     nops = ( nFeatures * (nFeatures-1) ) / 2.0
@@ -37,5 +37,6 @@ def compute(layer,fieldNum):
             if g1.intersects(g2):
                 a2 = f2.attributeMap()[fieldNum].toString()
                 s.addEdge(a1,a2)
+                s.addEdge(a2,a1)
     return s
 

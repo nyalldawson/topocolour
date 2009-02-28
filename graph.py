@@ -14,11 +14,12 @@ class Graph:
         else:
             self.nodeEdge[i]=set([j])
     def dump(self):
+        out = []
         for k in self.nodeEdge.keys():
-            print "(",str(k),":"
+            out.append( str(k)+":")
             for v in self.nodeEdge[k]:
-                print " -- ",v
-            print ")"
+                out.append(" --> "+str(v))
+        return "\n".join(out)
 
     def writeDot(self,name,filePath):
         dot=self.makeDot(name)
