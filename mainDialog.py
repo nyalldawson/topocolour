@@ -20,7 +20,8 @@ class Form(QDialog,Ui_Dialog):
         self.processTabs.setTabEnabled(1,False)
         self.nowDoStyle.setEnabled(False)
         self.processTabs.setCurrentIndex(0)
-
+        for key,alg in colouring.algorithms.iteritems():
+            self.algorithm.addItem(alg['name'],QVariant(key))
 
     def exec_(self):
         self.topology = topology.compute(self.layer, self.fieldIndex)
@@ -38,7 +39,10 @@ class Form(QDialog,Ui_Dialog):
 
 
     def doComputeColouring(self):
-        self.gColouring = colouring.greedy(self.topology)
+        key = str(self.algorithm.itemData(self.algorithm.currentIndex()).toString())
+        alg = colouring.algorithms[key]
+        fnAlg = alg['code']
+        self.gColouring = fnAlg(self.topology)
         self.maxColours = max(self.gColouring.values())
         self.layerCountLabel.setText(str(self.maxColours)+" colours needed")
         ok = True
