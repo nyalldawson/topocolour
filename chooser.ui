@@ -14,20 +14,13 @@
   </property>
   <layout class="QVBoxLayout" >
    <item>
-    <widget class="QLabel" name="label" >
-     <property name="text" >
-      <string>Select Layer and field</string>
-     </property>
-    </widget>
-   </item>
-   <item>
     <widget class="QTreeWidget" name="layerFields" >
      <property name="columnCount" >
       <number>1</number>
      </property>
      <column>
       <property name="text" >
-       <string>1</string>
+       <string>Select Layer and Field</string>
       </property>
      </column>
     </widget>
