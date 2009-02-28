@@ -22,7 +22,7 @@
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex" >
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="colouringTab" >
       <property name="enabled" >
@@ -32,13 +32,6 @@
        <string>Graph Colouring</string>
       </attribute>
       <layout class="QVBoxLayout" >
-       <item>
-        <widget class="QLabel" name="layerCountLabel" >
-         <property name="text" >
-          <string>How many colours needed.</string>
-         </property>
-        </widget>
-       </item>
        <item>
         <layout class="QHBoxLayout" >
          <item>
@@ -80,6 +73,13 @@
        <item>
         <layout class="QHBoxLayout" >
          <item>
+          <widget class="QPushButton" name="saveDotFile" >
+           <property name="text" >
+            <string>Save DOT File</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <spacer>
            <property name="orientation" >
             <enum>Qt::Horizontal</enum>
@@ -91,13 +91,6 @@
             </size>
            </property>
           </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="saveDotFile" >
-           <property name="text" >
-            <string>Save DOT File</string>
-           </property>
-          </widget>
          </item>
         </layout>
        </item>
@@ -119,7 +112,7 @@
          <item>
           <widget class="QLabel" name="label_3" >
            <property name="text" >
-            <string>Select Algorithm</string>
+            <string>Select Algorithm:</string>
            </property>
            <property name="buddy" >
             <cstring>algorithm</cstring>
@@ -129,23 +122,6 @@
          <item>
           <widget class="QComboBox" name="algorithm" />
          </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" >
-         <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
          <item>
           <widget class="QPushButton" name="computeColouring" >
            <property name="text" >
@@ -154,6 +130,13 @@
           </widget>
          </item>
         </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="layerCountLabel" >
+         <property name="text" >
+          <string/>
+         </property>
+        </widget>
        </item>
        <item>
         <spacer>
@@ -186,7 +169,7 @@
          <item>
           <widget class="QPushButton" name="nowDoStyle" >
            <property name="text" >
-            <string>Now colour the layer...</string>
+            <string>Now style the layer...</string>
            </property>
           </widget>
          </item>

@@ -55,7 +55,6 @@ class MainPlugin(object):
     status = chooser.exec_()
     if not status:
       return
-    print chooser.clicked
 
     # compute topology
 

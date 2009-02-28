@@ -11,8 +11,6 @@ from graph import Graph
 def compute(layer,fieldNum):
     """ compute topology from a layer/field """
 
-    print layer, fieldNum
-
     f1 = QgsFeature()
     f2 = QgsFeature()
 
