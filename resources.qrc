@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/icons" >
-        <file>icons/accents.png</file>
+        <file>icons/accent.png</file>
         <file>icons/dark2.png</file>
         <file>icons/paired.png</file>
         <file>icons/pastel1.png</file>

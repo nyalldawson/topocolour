@@ -58,7 +58,7 @@ class MainPlugin(object):
 
     # compute topology
 
-    main = mainDialog.Form(chooser.clicked.layer, chooser.clicked.fieldIndex, chooser.clicked.field)
+    main = mainDialog.Form(self.iface, chooser.clicked.layer, chooser.clicked.fieldIndex, chooser.clicked.field)
     main.exec_()
     
     pass

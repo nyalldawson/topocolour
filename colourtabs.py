@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'colourtabs.ui'
 #
-# Created: Sat Feb 28 15:53:05 2009
+# Created: Sat Feb 28 21:28:33 2009
 #      by: PyQt4 UI code generator 4.3.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -184,10 +184,6 @@ class Ui_Dialog(object):
         self.applyStyle = QtGui.QPushButton(self.layerStyleTab)
         self.applyStyle.setObjectName("applyStyle")
         self.hboxlayout8.addWidget(self.applyStyle)
-
-        self.saveStyle = QtGui.QPushButton(self.layerStyleTab)
-        self.saveStyle.setObjectName("saveStyle")
-        self.hboxlayout8.addWidget(self.saveStyle)
         self.vboxlayout3.addLayout(self.hboxlayout8)
 
         self.hboxlayout9 = QtGui.QHBoxLayout()
@@ -228,7 +224,7 @@ class Ui_Dialog(object):
         self.label_7.setBuddy(self.lineColour)
 
         self.retranslateUi(Dialog)
-        self.processTabs.setCurrentIndex(0)
+        self.processTabs.setCurrentIndex(1)
         QtCore.QObject.connect(self.buttonBox,QtCore.SIGNAL("accepted()"),Dialog.accept)
         QtCore.QObject.connect(self.buttonBox,QtCore.SIGNAL("rejected()"),Dialog.reject)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -244,8 +240,7 @@ class Ui_Dialog(object):
         Dialog.setTabOrder(self.lineType,self.lineWidth)
         Dialog.setTabOrder(self.lineWidth,self.lineColour)
         Dialog.setTabOrder(self.lineColour,self.applyStyle)
-        Dialog.setTabOrder(self.applyStyle,self.saveStyle)
-        Dialog.setTabOrder(self.saveStyle,self.brewerInfo)
+        Dialog.setTabOrder(self.applyStyle,self.brewerInfo)
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QtGui.QApplication.translate("Dialog", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
@@ -261,9 +256,8 @@ class Ui_Dialog(object):
         self.label.setText(QtGui.QApplication.translate("Dialog", "Colour Scheme", None, QtGui.QApplication.UnicodeUTF8))
         self.label_5.setText(QtGui.QApplication.translate("Dialog", "Line Type", None, QtGui.QApplication.UnicodeUTF8))
         self.label_6.setText(QtGui.QApplication.translate("Dialog", "Width", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_7.setText(QtGui.QApplication.translate("Dialog", "Colour", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_7.setText(QtGui.QApplication.translate("Dialog", "Line Colour", None, QtGui.QApplication.UnicodeUTF8))
         self.applyStyle.setText(QtGui.QApplication.translate("Dialog", "Apply", None, QtGui.QApplication.UnicodeUTF8))
-        self.saveStyle.setText(QtGui.QApplication.translate("Dialog", "Save Style", None, QtGui.QApplication.UnicodeUTF8))
         self.brewerInfo.setText(QtGui.QApplication.translate("Dialog", "palette © info", None, QtGui.QApplication.UnicodeUTF8))
         self.processTabs.setTabText(self.processTabs.indexOf(self.layerStyleTab), QtGui.QApplication.translate("Dialog", "Layer Style", None, QtGui.QApplication.UnicodeUTF8))
 
