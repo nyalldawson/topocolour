@@ -43,9 +43,7 @@ class Form(QDialog,Ui_Dialog):
             QDialog.exec_(self)
 
     def doApplyStyle(self):
-        print "apply style"
         name = str(self.colourScheme.currentText())
-        print name,self.maxColours
         palette = brewer.palette(name,self.maxColours)
         #self.layer.symbols = [makeSymbol(self,rgb) for rgb in palette]
         self.layer.r = QgsUniqueValueRenderer(QGis.Polygon)
@@ -84,7 +82,6 @@ class Form(QDialog,Ui_Dialog):
             self.processTabs.setTabEnabled(1,True)
     
     def setupColourSchemes(self):
-        print "set the schemes combobox"
         self.colourScheme.setIconSize(QSize(64,16))
         for name,p in brewer.palettes.iteritems():
             if p['limits'][1] >= self.maxColours:
