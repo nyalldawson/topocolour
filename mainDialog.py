@@ -24,6 +24,7 @@ class Form(QDialog,Ui_Dialog):
         self.processTabs.setTabEnabled(0,True)
         self.processTabs.setTabEnabled(1,False)
         self.nowDoStyle.setEnabled(False)
+        QObject.connect(self.nowDoStyle,SIGNAL("clicked()"),self.doNowDoStyle)
         self.processTabs.setCurrentIndex(0)
         for key,alg in colouring.algorithms.iteritems():
             self.algorithm.addItem(alg['name'],QVariant(key))
@@ -42,7 +43,7 @@ class Form(QDialog,Ui_Dialog):
         
         # line colour dialog
         QObject.connect(self.lineColour,SIGNAL("clicked()"),self.doLineColour)
-        
+        self.setLineColourButton(QColor(0,0,0))
 
     def exec_(self):
         self.topology = topology.compute(self.layer, self.fieldIndex)
@@ -75,6 +76,8 @@ class Form(QDialog,Ui_Dialog):
         if f:
             self.topology.writeDot(self.layer.name(),f)
 
+    def doNowDoStyle(self):
+        self.processTabs.setCurrentIndex(1)
 
     def doComputeColouring(self):
         key = str(self.algorithm.itemData(self.algorithm.currentIndex()).toString())
@@ -91,9 +94,17 @@ class Form(QDialog,Ui_Dialog):
 
 
     def doLineColour(self):
-        print "do line colour"
         get = QColorDialog.getColor(QColor(255,255,255),self.iface.mapCanvas())
-        print get
+        if get:
+            self.setLineColourButton(get)
+
+    def setLineColourButton(self,colour):
+        self.myLineColour = colour
+        self.lineColour.setStyleSheet(
+            "QPushButton { background-color: %s }"
+            "QPushButton:pressed { background-color: %s}" % (colour.name(),colour.light(125).name())
+            )
+
 
     def setupColourSchemes(self):
         self.colourScheme.setIconSize(QSize(64,16))
@@ -111,7 +122,8 @@ def makeSymbol(self, rgb, v):
     s = QgsSymbol(QGis.Polygon,v,"","")
     s.setFillColor(QColor(rgb[0],rgb[1],rgb[2]))
     s.setFillStyle(Qt.SolidPattern)
-    s.setColor(QColor(0,0,0))
+    s.setColor(self.myLineColour)
+    #s.setColor(QColor(0,0,0))
 
     myLineStyle = self.lineType.itemData( self.lineType.currentIndex(), Qt.UserRole ).toString()
     s.setLineStyle( QgsSymbologyUtils.qString2PenStyle( myLineStyle ) )
