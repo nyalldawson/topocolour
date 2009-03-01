@@ -40,7 +40,8 @@ class Form(QDialog,Ui_Dialog):
         self.lineType.addItem( QIcon( QgsSymbologyUtils.char2LinePixmap( "DashDotDotLine" ) ), "Dash Dot Dot Line" , QVariant("DashDotDotLine") )
         self.lineType.addItem( QIcon( QgsSymbologyUtils.char2LinePixmap( "NoPen" ) ), "No Pen" , QVariant("NoPen") )
         
-  
+        # line colour dialog
+        QObject.connect(self.lineColour,SIGNAL("clicked()"),self.doLineColour)
         
 
     def exec_(self):
@@ -89,7 +90,11 @@ class Form(QDialog,Ui_Dialog):
             self.processTabs.setTabEnabled(1,True)
 
 
-    
+    def doLineColour(self):
+        print "do line colour"
+        get = QColorDialog.getColor(QColor(255,255,255),self.iface.mapCanvas())
+        print get
+
     def setupColourSchemes(self):
         self.colourScheme.setIconSize(QSize(64,16))
         for name,p in brewer.palettes.iteritems():
