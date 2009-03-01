@@ -30,7 +30,6 @@ class Form(QDialog,Ui_Dialog):
 
         # layer style tab setup
         QObject.connect(self.applyStyle,SIGNAL("clicked()"),self.doApplyStyle)
-        # dont need this QObject.connect(self.saveStyle,SIGNAL("clicked()"),self.doSaveStyle)
         QObject.connect(self.brewerInfo,SIGNAL("clicked()"),self.doBrewerInfo)
         
 
@@ -45,18 +44,15 @@ class Form(QDialog,Ui_Dialog):
     def doApplyStyle(self):
         name = str(self.colourScheme.currentText())
         palette = brewer.palette(name,self.maxColours)
-        #self.layer.symbols = [makeSymbol(self,rgb) for rgb in palette]
         self.layer.r = QgsUniqueValueRenderer(QGis.Polygon)
         self.layer.r.setClassificationField(self.fieldIndex)
         for k,v in self.gColouring.iteritems():
-            #self.layer.r.insertValue(k,self.layer.symbols[v-1])
             self.layer.r.insertValue(k,makeSymbol(self,palette[v-1],k))
             
         self.layer.setRenderer(self.layer.r)
+        # redraw the map and refresh the legend
         self.iface.mapCanvas().refresh()
-#    def doSaveStyle(self):
-#        # TODO: save the qml here
-#        print "save style"
+        self.iface.refreshLegend(self.layer)
 
     def doBrewerInfo(self):
         # TODO: write some doc here
