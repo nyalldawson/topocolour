@@ -9,6 +9,7 @@ from colourtabs import Ui_Dialog
 import topology
 import colouring
 import brewer
+import display
 
 class Form(QDialog,Ui_Dialog):
     def __init__(self, iface, layer,fieldIndex, field):
@@ -68,8 +69,7 @@ class Form(QDialog,Ui_Dialog):
         QgsProject.instance().dirty(True)
 
     def doBrewerInfo(self):
-        # TODO: write some doc here
-        print "show brewer info"
+        display.show(brewer.doc)
 
     def doSaveDotFile(self):
         f=QFileDialog.getSaveFileName(self,"Save DOT file","","DOT Files (*.dot)")
