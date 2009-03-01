@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'colourtabs.ui'
 #
-# Created: Sat Feb 28 21:28:33 2009
+# Created: Sun Mar  1 21:33:46 2009
 #      by: PyQt4 UI code generator 4.3.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -154,6 +154,8 @@ class Ui_Dialog(object):
         self.hboxlayout6.addWidget(self.label_6)
 
         self.lineWidth = QtGui.QDoubleSpinBox(self.groupBox_2)
+        self.lineWidth.setSingleStep(0.1)
+        self.lineWidth.setProperty("value",QtCore.QVariant(0.5))
         self.lineWidth.setObjectName("lineWidth")
         self.hboxlayout6.addWidget(self.lineWidth)
         self.vboxlayout4.addLayout(self.hboxlayout6)
@@ -212,7 +214,7 @@ class Ui_Dialog(object):
 
         self.buttonBox = QtGui.QDialogButtonBox(Dialog)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Abort|QtGui.QDialogButtonBox.Help|QtGui.QDialogButtonBox.NoButton)
+        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Close|QtGui.QDialogButtonBox.Help|QtGui.QDialogButtonBox.NoButton)
         self.buttonBox.setObjectName("buttonBox")
         self.vboxlayout.addWidget(self.buttonBox)
         self.label_8.setBuddy(self.layerName)

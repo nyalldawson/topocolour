@@ -241,7 +241,14 @@
              </widget>
             </item>
             <item>
-             <widget class="QDoubleSpinBox" name="lineWidth" />
+             <widget class="QDoubleSpinBox" name="lineWidth" >
+              <property name="singleStep" >
+               <double>0.100000000000000</double>
+              </property>
+              <property name="value" >
+               <double>0.500000000000000</double>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
@@ -360,7 +367,7 @@
       <enum>Qt::Horizontal</enum>
      </property>
      <property name="standardButtons" >
-      <set>QDialogButtonBox::Abort|QDialogButtonBox::Help|QDialogButtonBox::NoButton</set>
+      <set>QDialogButtonBox::Close|QDialogButtonBox::Help|QDialogButtonBox::NoButton</set>
      </property>
     </widget>
    </item>

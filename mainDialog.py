@@ -63,6 +63,7 @@ class Form(QDialog,Ui_Dialog):
         # redraw the map and refresh the legend
         self.iface.mapCanvas().refresh()
         self.iface.refreshLegend(self.layer)
+        QgsProject.instance().dirty(True)
 
     def doBrewerInfo(self):
         # TODO: write some doc here
@@ -86,6 +87,8 @@ class Form(QDialog,Ui_Dialog):
             self.setupColourSchemes()
             self.nowDoStyle.setEnabled(True)
             self.processTabs.setTabEnabled(1,True)
+
+
     
     def setupColourSchemes(self):
         self.colourScheme.setIconSize(QSize(64,16))
@@ -108,6 +111,6 @@ def makeSymbol(self, rgb, v):
     myLineStyle = self.lineType.itemData( self.lineType.currentIndex(), Qt.UserRole ).toString()
     s.setLineStyle( QgsSymbologyUtils.qString2PenStyle( myLineStyle ) )
 
+    s.setLineWidth(self.lineWidth.value())
 
-    s.setLineWidth(0.5)
     return s
