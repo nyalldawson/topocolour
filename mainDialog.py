@@ -31,6 +31,16 @@ class Form(QDialog,Ui_Dialog):
         # layer style tab setup
         QObject.connect(self.applyStyle,SIGNAL("clicked()"),self.doApplyStyle)
         QObject.connect(self.brewerInfo,SIGNAL("clicked()"),self.doBrewerInfo)
+
+        # line styles
+        self.lineType.addItem( QIcon( QgsSymbologyUtils.char2LinePixmap( "SolidLine" ) ), "Solid Line" , QVariant("SolidLine" ))
+        self.lineType.addItem( QIcon( QgsSymbologyUtils.char2LinePixmap( "DashLine" ) ), "Dash Line" , QVariant("DashLine" ))
+        self.lineType.addItem( QIcon( QgsSymbologyUtils.char2LinePixmap( "DotLine" ) ), "Dot Line" , QVariant("DotLine") )
+        self.lineType.addItem( QIcon( QgsSymbologyUtils.char2LinePixmap( "DashDotLine" ) ),  "Dash Dot Line" , QVariant("DashDotLine") )
+        self.lineType.addItem( QIcon( QgsSymbologyUtils.char2LinePixmap( "DashDotDotLine" ) ), "Dash Dot Dot Line" , QVariant("DashDotDotLine") )
+        self.lineType.addItem( QIcon( QgsSymbologyUtils.char2LinePixmap( "NoPen" ) ), "No Pen" , QVariant("NoPen") )
+        
+  
         
 
     def exec_(self):
@@ -94,5 +104,10 @@ def makeSymbol(self, rgb, v):
     s.setFillColor(QColor(rgb[0],rgb[1],rgb[2]))
     s.setFillStyle(Qt.SolidPattern)
     s.setColor(QColor(0,0,0))
+
+    myLineStyle = self.lineType.itemData( self.lineType.currentIndex(), Qt.UserRole ).toString()
+    s.setLineStyle( QgsSymbologyUtils.qString2PenStyle( myLineStyle ) )
+
+
     s.setLineWidth(0.5)
     return s
