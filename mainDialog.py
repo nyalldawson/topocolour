@@ -69,7 +69,8 @@ class Form(QDialog,Ui_Dialog):
         QgsProject.instance().dirty(True)
 
     def doBrewerInfo(self):
-        display.show(brewer.doc)
+        QMessageBox.information(None,"Topocolour brewer palettes",brewer.doc,QMessageBox.Ok)
+        #display.show(brewer.doc)
 
     def doSaveDotFile(self):
         f=QFileDialog.getSaveFileName(self,"Save DOT file","","DOT Files (*.dot)")
@@ -95,7 +96,7 @@ class Form(QDialog,Ui_Dialog):
 
     def doLineColour(self):
         get = QColorDialog.getColor(QColor(255,255,255),self.iface.mapCanvas())
-        if get:
+        if get.isValid():
             self.setLineColourButton(get)
 
     def setLineColourButton(self,colour):
