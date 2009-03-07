@@ -8,13 +8,15 @@ from qgis.gui import *
 
 from graph import Graph
 
-def compute(layer,fieldNum):
+def compute(layer,fieldNum, idGraph  = False):
     """ compute topology from a layer/field """
 
     f1 = QgsFeature()
     f2 = QgsFeature()
 
     s=Graph(sorted = False)
+    if idGraph:
+        ig = Graph(sorted=True)
 
     nFeatures = layer.featureCount()
     nops = ( nFeatures * (nFeatures-1) ) / 2.0
@@ -38,5 +40,10 @@ def compute(layer,fieldNum):
                 a2 = f2.attributeMap()[fieldNum].toString()
                 s.addEdge(a1,a2)
                 s.addEdge(a2,a1)
-    return s
+                if idGraph:
+                    ig.addEdge(l1,l2)
+    if not idGraph:
+        return s
+    else:
+        return (s,ig)
 

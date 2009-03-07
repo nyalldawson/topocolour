@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'colourtabs.ui'
 #
-# Created: Mon Mar  2 21:41:48 2009
+# Created: Sat Mar  7 16:21:41 2009
 #      by: PyQt4 UI code generator 4.3.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -57,6 +57,10 @@ class Ui_Dialog(object):
         self.saveDotFile = QtGui.QPushButton(self.colouringTab)
         self.saveDotFile.setObjectName("saveDotFile")
         self.hboxlayout1.addWidget(self.saveDotFile)
+
+        self.addAdjacency = QtGui.QPushButton(self.colouringTab)
+        self.addAdjacency.setObjectName("addAdjacency")
+        self.hboxlayout1.addWidget(self.addAdjacency)
 
         spacerItem = QtGui.QSpacerItem(40,20,QtGui.QSizePolicy.Expanding,QtGui.QSizePolicy.Minimum)
         self.hboxlayout1.addItem(spacerItem)
@@ -253,6 +257,7 @@ class Ui_Dialog(object):
         "</style></head><body style=\" font-family:\'Sans Serif\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
         "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Save the adjacency graph as a DOT format file.</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.saveDotFile.setText(QtGui.QApplication.translate("Dialog", "Save DOT File", None, QtGui.QApplication.UnicodeUTF8))
+        self.addAdjacency.setText(QtGui.QApplication.translate("Dialog", "Add Adjacency Layer", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("Dialog", "Select Algorithm:", None, QtGui.QApplication.UnicodeUTF8))
         self.computeColouring.setText(QtGui.QApplication.translate("Dialog", "Compute Colouring", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox.setTitle(QtGui.QApplication.translate("Dialog", "Adjacencies", None, QtGui.QApplication.UnicodeUTF8))

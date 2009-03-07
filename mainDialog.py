@@ -7,6 +7,7 @@ from qgis.gui import *
 from colourtabs import Ui_Dialog
 
 import topology
+import adjlayer
 import colouring
 import brewer
 import display
@@ -21,6 +22,7 @@ class Form(QDialog,Ui_Dialog):
         self.layerName.setText(layer.name())
         self.fieldName.setText(field.name())
         QObject.connect(self.saveDotFile,SIGNAL("clicked()"),self.doSaveDotFile)
+        QObject.connect(self.addAdjacency,SIGNAL("clicked()"),self.doAddAdjacency)
         QObject.connect(self.computeColouring,SIGNAL("clicked()"),self.doComputeColouring)
         self.processTabs.setTabEnabled(0,True)
         self.processTabs.setTabEnabled(1,False)
@@ -50,7 +52,7 @@ class Form(QDialog,Ui_Dialog):
         QObject.connect(self.buttonBox,SIGNAL("helpRequested()"),self.helpReq)
 
     def exec_(self):
-        self.topology = topology.compute(self.layer, self.fieldIndex)
+        self.topology,self.idGraph = topology.compute(self.layer, self.fieldIndex, True)
         if not self.topology:
             return None
         else:
@@ -82,6 +84,10 @@ class Form(QDialog,Ui_Dialog):
         f=QFileDialog.getSaveFileName(self,"Save DOT file","","DOT Files (*.dot)")
         if f:
             self.topology.writeDot(self.layer.name(),f)
+
+    def doAddAdjacency(self):
+        aLayer = adjlayer.make(self.layer,self.idGraph,self.fieldIndex)
+        QgsMapLayerRegistry.instance().addMapLayer(aLayer)
 
     def doNowDoStyle(self):
         self.processTabs.setCurrentIndex(1)
