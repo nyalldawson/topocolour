@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'colourtabs.ui'
 #
-# Created: Mon Mar  2 08:00:18 2009
+# Created: Mon Mar  2 21:41:48 2009
 #      by: PyQt4 UI code generator 4.3.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -254,10 +254,6 @@ class Ui_Dialog(object):
         "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Save the adjacency graph as a DOT format file.</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.saveDotFile.setText(QtGui.QApplication.translate("Dialog", "Save DOT File", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("Dialog", "Select Algorithm:", None, QtGui.QApplication.UnicodeUTF8))
-        self.computeColouring.setToolTip(QtGui.QApplication.translate("Dialog", "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-        "p, li { white-space: pre-wrap; }\n"
-        "</style></head><body style=\" font-family:\'Sans Serif\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-        "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Choose colour numbers for polygons</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.computeColouring.setText(QtGui.QApplication.translate("Dialog", "Compute Colouring", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox.setTitle(QtGui.QApplication.translate("Dialog", "Adjacencies", None, QtGui.QApplication.UnicodeUTF8))
         self.nowDoStyle.setText(QtGui.QApplication.translate("Dialog", "Now style the layer...", None, QtGui.QApplication.UnicodeUTF8))

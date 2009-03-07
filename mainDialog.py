@@ -46,6 +46,9 @@ class Form(QDialog,Ui_Dialog):
         QObject.connect(self.lineColour,SIGNAL("clicked()"),self.doLineColour)
         self.setLineColourButton(QColor(0,0,0))
 
+        # button box
+        QObject.connect(self.buttonBox,SIGNAL("helpRequested()"),self.helpReq)
+
     def exec_(self):
         self.topology = topology.compute(self.layer, self.fieldIndex)
         if not self.topology:
@@ -67,6 +70,9 @@ class Form(QDialog,Ui_Dialog):
         self.iface.mapCanvas().refresh()
         self.iface.refreshLegend(self.layer)
         QgsProject.instance().dirty(True)
+
+    def helpReq(self):
+        QMessageBox.information(None,"Topocolour Help",doc,QMessageBox.Ok)
 
     def doBrewerInfo(self):
         QMessageBox.information(None,"Topocolour brewer palettes",brewer.doc,QMessageBox.Ok)
@@ -132,3 +138,19 @@ def makeSymbol(self, rgb, v):
     s.setLineWidth(self.lineWidth.value())
 
     return s
+
+doc = """
+
+***TopoColour***
+
+This plugin colours polygon layers so that no adjacent polygons are the same colour.
+
+First choose a layer and attribute value.
+
+Then choose a colouring algorithm from the drop down and compute the colouring.
+
+Switch to the next tab, and choose a palette.
+
+For more information, go to http://www.maths.lancs.ac.uk/~rowlings/Qgis/Plugins/Documentation/topocolour/
+
+"""
