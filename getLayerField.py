@@ -37,10 +37,10 @@ class Chooser(QDialog, Ui_Dialog):
             fields = layer.dataProvider().fields()
             for k,v in zip(fields.keys(),fields.values()):
                 jtem = FieldItem(item, layer, k, v)
-                
             self.items.append(item)
         layerFieldsTree.insertTopLevelItems(0, self.items);
-
+        for item in self.items:
+            layerFieldsTree.expandItem(item)
         QObject.connect(self.layerFields,SIGNAL("itemClicked(QTreeWidgetItem*, int)"),self.clickedItem)
         QObject.connect(self.layerFields,SIGNAL("itemDoubleClicked(QTreeWidgetItem*, int)"),self.clickedItemDouble)
  

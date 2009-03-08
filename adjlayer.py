@@ -6,6 +6,7 @@ from qgis.gui import *
 
 def make(layer,ig,attrNum):
     vl = QgsVectorLayer("LineString",layer.name()+"-adj.","memory")
+    vl.setCrs(layer.srs())
     pr = vl.dataProvider()
     pr.addAttributes({"label":"string"})
     
