@@ -9,6 +9,9 @@ def make(layer,ig,attrNum):
     vl.setCrs(layer.srs())
     pr = vl.dataProvider()
     pr.addAttributes({"label":"string"})
+    pr.addAttributes({"from":"string"})
+    pr.addAttributes({"to":"string"})
+
     
     info = boxInfo(layer, attrNum)
 
@@ -23,6 +26,8 @@ def make(layer,ig,attrNum):
 
             fet.setGeometry(QgsGeometry.fromPolyline([ptF,ptT]))
             fet.addAttribute(0,QVariant(labelF+"-"+labelT))
+            fet.addAttribute(1,QVariant(labelF))
+            fet.addAttribute(2,QVariant(labelT))
             pr.addFeatures([fet])
     vl.updateExtents()
     return vl
