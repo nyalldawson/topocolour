@@ -25,36 +25,39 @@ def compute(layer, fieldNum, idGraph  = False):
     progress.setWindowModality(Qt.WindowModal)
     iop = 0
 
-    ids = featureIds(layer)
+    fData = featureData(layer,fieldNum)
 
-    for l1 in range(1,len(ids)):
-        layer.featureAtId(ids[l1],f1)
-        a1 = f1.attributeMap()[fieldNum].toString()
-        g1 = f1.geometry()
+    for l1 in range(1,len(fData)):
+        a1 = fData[l1]['att']
+        g1 = fData[l1]['geom']
+
         for l2 in range(l1):
             progress.setValue(iop)
             if progress.wasCanceled():
                 return None
             iop=iop+1
-            layer.featureAtId(ids[l2],f2)
-            g2 = f2.geometry()
+            g2 = fData[l2]['geom']
             if g1.intersects(g2):
-                a2 = f2.attributeMap()[fieldNum].toString()
+                a2 = fData[l2]['att']
                 s.addEdge(a1,a2)
                 s.addEdge(a2,a1)
                 if idGraph:
-                    ig.addEdge(ids[l1],ids[l2])
+                    ig.addEdge(fData[l1]['id'],fData[l2]['id'])
     if not idGraph:
         return s
     else:
         return (s,ig)
 
-def featureIds(layer):
-    ids = []
+def featureData(layer,fieldNum):
+    fData = []
     p = layer.dataProvider()
     allAttrs = p.attributeIndexes()
     p.select(allAttrs)
     f = QgsFeature()
-    while p.nextFeature(f):        
-        ids.append(f.id())
-    return ids
+    while p.nextFeature(f):
+        fData.append({
+                'id': f.id(),
+                'att': f.attributeMap()[fieldNum].toString(),
+                'geom': f.geometryAndOwnership()
+                })
+    return fData
