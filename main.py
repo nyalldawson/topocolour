@@ -33,7 +33,7 @@ class MainPlugin(object):
 
   def initGui(self):
     # Create action
-    self.action = QAction(QIcon(":/icons/topocolour.png"),"TopoColour",self.iface.mainWindow())
+    self.action = QAction(QIcon(":/icons/icons/topocolour.png"),"TopoColour",self.iface.mainWindow())
     self.action.setWhatsThis("Colour polygons by topology")
     QObject.connect(self.action,SIGNAL("activated()"),self.run)
     self.iface.addToolBarIcon(self.action)

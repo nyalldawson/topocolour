@@ -8,5 +8,6 @@
         <file>icons/set1.png</file>
         <file>icons/set2.png</file>
         <file>icons/set3.png</file>
+        <file>icons/topocolour.png</file>
     </qresource>
 </RCC>
