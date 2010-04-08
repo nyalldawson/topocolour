@@ -35,7 +35,7 @@ class MainPlugin(object):
     # Create action
     self.action = QAction(QIcon(":/icons/icons/topocolour.png"),"TopoColour",self.iface.mainWindow())
     self.action.setWhatsThis("Colour polygons by topology")
-    QObject.connect(self.action,SIGNAL("activated()"),self.run)
+    QObject.connect(self.action,SIGNAL("triggered()"),self.run)
     self.iface.addToolBarIcon(self.action)
     self.iface.addPluginToMenu("&TopoColour",self.action)
 
