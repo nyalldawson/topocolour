@@ -1,0 +1,13 @@
+[general]
+name=TopoColour
+description=Colour polygons so neighbouring polygons are different
+category=Vector
+version=0.5
+qgisMinimumVersion=2.4
+
+author=Barry Rowlingson
+email=b.rowlingson@lancaster.ac.uk
+
+icon=icons/topocolour.png
+
+class_name=TopoColourPlugin

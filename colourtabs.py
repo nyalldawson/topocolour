@@ -2,224 +2,180 @@
 
 # Form implementation generated from reading ui file 'colourtabs.ui'
 #
-# Created: Sat Mar  7 16:21:41 2009
-#      by: PyQt4 UI code generator 4.3.3
+# Created: Tue Oct 21 11:02:49 2014
+#      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
 
+try:
+    _fromUtf8 = QtCore.QString.fromUtf8
+except AttributeError:
+    _fromUtf8 = lambda s: s
+
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(QtCore.QSize(QtCore.QRect(0,0,397,565).size()).expandedTo(Dialog.minimumSizeHint()))
-
+        Dialog.setObjectName(_fromUtf8("Dialog"))
+        Dialog.resize(397, 565)
         self.vboxlayout = QtGui.QVBoxLayout(Dialog)
-        self.vboxlayout.setObjectName("vboxlayout")
-
+        self.vboxlayout.setObjectName(_fromUtf8("vboxlayout"))
         self.processTabs = QtGui.QTabWidget(Dialog)
         self.processTabs.setTabPosition(QtGui.QTabWidget.North)
         self.processTabs.setTabShape(QtGui.QTabWidget.Rounded)
-        self.processTabs.setObjectName("processTabs")
-
+        self.processTabs.setObjectName(_fromUtf8("processTabs"))
         self.colouringTab = QtGui.QWidget()
         self.colouringTab.setEnabled(True)
-        self.colouringTab.setObjectName("colouringTab")
-
+        self.colouringTab.setObjectName(_fromUtf8("colouringTab"))
         self.vboxlayout1 = QtGui.QVBoxLayout(self.colouringTab)
-        self.vboxlayout1.setObjectName("vboxlayout1")
-
+        self.vboxlayout1.setObjectName(_fromUtf8("vboxlayout1"))
         self.hboxlayout = QtGui.QHBoxLayout()
-        self.hboxlayout.setObjectName("hboxlayout")
-
+        self.hboxlayout.setObjectName(_fromUtf8("hboxlayout"))
         self.label_8 = QtGui.QLabel(self.colouringTab)
-        self.label_8.setObjectName("label_8")
+        self.label_8.setObjectName(_fromUtf8("label_8"))
         self.hboxlayout.addWidget(self.label_8)
-
         self.layerName = QtGui.QLineEdit(self.colouringTab)
         self.layerName.setReadOnly(True)
-        self.layerName.setObjectName("layerName")
+        self.layerName.setObjectName(_fromUtf8("layerName"))
         self.hboxlayout.addWidget(self.layerName)
-
         self.label_9 = QtGui.QLabel(self.colouringTab)
-        self.label_9.setObjectName("label_9")
+        self.label_9.setObjectName(_fromUtf8("label_9"))
         self.hboxlayout.addWidget(self.label_9)
-
         self.fieldName = QtGui.QLineEdit(self.colouringTab)
         self.fieldName.setReadOnly(True)
-        self.fieldName.setObjectName("fieldName")
+        self.fieldName.setObjectName(_fromUtf8("fieldName"))
         self.hboxlayout.addWidget(self.fieldName)
         self.vboxlayout1.addLayout(self.hboxlayout)
-
         self.hboxlayout1 = QtGui.QHBoxLayout()
-        self.hboxlayout1.setObjectName("hboxlayout1")
-
+        self.hboxlayout1.setObjectName(_fromUtf8("hboxlayout1"))
         self.saveDotFile = QtGui.QPushButton(self.colouringTab)
-        self.saveDotFile.setObjectName("saveDotFile")
+        self.saveDotFile.setObjectName(_fromUtf8("saveDotFile"))
         self.hboxlayout1.addWidget(self.saveDotFile)
-
         self.addAdjacency = QtGui.QPushButton(self.colouringTab)
-        self.addAdjacency.setObjectName("addAdjacency")
+        self.addAdjacency.setObjectName(_fromUtf8("addAdjacency"))
         self.hboxlayout1.addWidget(self.addAdjacency)
-
-        spacerItem = QtGui.QSpacerItem(40,20,QtGui.QSizePolicy.Expanding,QtGui.QSizePolicy.Minimum)
+        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.hboxlayout1.addItem(spacerItem)
         self.vboxlayout1.addLayout(self.hboxlayout1)
-
         self.hboxlayout2 = QtGui.QHBoxLayout()
-        self.hboxlayout2.setObjectName("hboxlayout2")
-
-        spacerItem1 = QtGui.QSpacerItem(40,20,QtGui.QSizePolicy.Expanding,QtGui.QSizePolicy.Minimum)
+        self.hboxlayout2.setObjectName(_fromUtf8("hboxlayout2"))
+        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.hboxlayout2.addItem(spacerItem1)
-
         self.label_3 = QtGui.QLabel(self.colouringTab)
-        self.label_3.setObjectName("label_3")
+        self.label_3.setObjectName(_fromUtf8("label_3"))
         self.hboxlayout2.addWidget(self.label_3)
-
         self.algorithm = QtGui.QComboBox(self.colouringTab)
-        self.algorithm.setObjectName("algorithm")
+        self.algorithm.setObjectName(_fromUtf8("algorithm"))
         self.hboxlayout2.addWidget(self.algorithm)
-
         self.computeColouring = QtGui.QPushButton(self.colouringTab)
-        self.computeColouring.setObjectName("computeColouring")
+        self.computeColouring.setObjectName(_fromUtf8("computeColouring"))
         self.hboxlayout2.addWidget(self.computeColouring)
         self.vboxlayout1.addLayout(self.hboxlayout2)
-
         self.layerCountLabel = QtGui.QLabel(self.colouringTab)
-        self.layerCountLabel.setObjectName("layerCountLabel")
+        self.layerCountLabel.setText(_fromUtf8(""))
+        self.layerCountLabel.setObjectName(_fromUtf8("layerCountLabel"))
         self.vboxlayout1.addWidget(self.layerCountLabel)
-
         self.groupBox = QtGui.QGroupBox(self.colouringTab)
-        self.groupBox.setObjectName("groupBox")
-
+        self.groupBox.setObjectName(_fromUtf8("groupBox"))
         self.vboxlayout2 = QtGui.QVBoxLayout(self.groupBox)
-        self.vboxlayout2.setObjectName("vboxlayout2")
-
+        self.vboxlayout2.setObjectName(_fromUtf8("vboxlayout2"))
         self.graphDump = QtGui.QTextEdit(self.groupBox)
         self.graphDump.setReadOnly(True)
-        self.graphDump.setObjectName("graphDump")
+        self.graphDump.setObjectName(_fromUtf8("graphDump"))
         self.vboxlayout2.addWidget(self.graphDump)
         self.vboxlayout1.addWidget(self.groupBox)
-
         self.hboxlayout3 = QtGui.QHBoxLayout()
-        self.hboxlayout3.setObjectName("hboxlayout3")
-
-        spacerItem2 = QtGui.QSpacerItem(40,20,QtGui.QSizePolicy.Expanding,QtGui.QSizePolicy.Minimum)
+        self.hboxlayout3.setObjectName(_fromUtf8("hboxlayout3"))
+        spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.hboxlayout3.addItem(spacerItem2)
-
         self.nowDoStyle = QtGui.QPushButton(self.colouringTab)
-        self.nowDoStyle.setObjectName("nowDoStyle")
+        self.nowDoStyle.setObjectName(_fromUtf8("nowDoStyle"))
         self.hboxlayout3.addWidget(self.nowDoStyle)
         self.vboxlayout1.addLayout(self.hboxlayout3)
-        self.processTabs.addTab(self.colouringTab,"")
-
+        self.processTabs.addTab(self.colouringTab, _fromUtf8(""))
         self.layerStyleTab = QtGui.QWidget()
         self.layerStyleTab.setEnabled(True)
-        self.layerStyleTab.setObjectName("layerStyleTab")
-
+        self.layerStyleTab.setObjectName(_fromUtf8("layerStyleTab"))
         self.vboxlayout3 = QtGui.QVBoxLayout(self.layerStyleTab)
-        self.vboxlayout3.setObjectName("vboxlayout3")
-
+        self.vboxlayout3.setObjectName(_fromUtf8("vboxlayout3"))
         self.groupBox_2 = QtGui.QGroupBox(self.layerStyleTab)
-        self.groupBox_2.setObjectName("groupBox_2")
-
+        self.groupBox_2.setObjectName(_fromUtf8("groupBox_2"))
         self.vboxlayout4 = QtGui.QVBoxLayout(self.groupBox_2)
-        self.vboxlayout4.setObjectName("vboxlayout4")
-
+        self.vboxlayout4.setObjectName(_fromUtf8("vboxlayout4"))
         self.hboxlayout4 = QtGui.QHBoxLayout()
-        self.hboxlayout4.setObjectName("hboxlayout4")
-
+        self.hboxlayout4.setObjectName(_fromUtf8("hboxlayout4"))
         self.label = QtGui.QLabel(self.groupBox_2)
-        self.label.setObjectName("label")
+        self.label.setObjectName(_fromUtf8("label"))
         self.hboxlayout4.addWidget(self.label)
-
         self.colourScheme = QtGui.QComboBox(self.groupBox_2)
-        self.colourScheme.setObjectName("colourScheme")
+        self.colourScheme.setObjectName(_fromUtf8("colourScheme"))
         self.hboxlayout4.addWidget(self.colourScheme)
         self.vboxlayout4.addLayout(self.hboxlayout4)
-
         self.hboxlayout5 = QtGui.QHBoxLayout()
-        self.hboxlayout5.setObjectName("hboxlayout5")
-
+        self.hboxlayout5.setObjectName(_fromUtf8("hboxlayout5"))
         self.label_5 = QtGui.QLabel(self.groupBox_2)
-        self.label_5.setObjectName("label_5")
+        self.label_5.setObjectName(_fromUtf8("label_5"))
         self.hboxlayout5.addWidget(self.label_5)
-
         self.lineType = QtGui.QComboBox(self.groupBox_2)
-        self.lineType.setObjectName("lineType")
+        self.lineType.setObjectName(_fromUtf8("lineType"))
         self.hboxlayout5.addWidget(self.lineType)
         self.vboxlayout4.addLayout(self.hboxlayout5)
-
         self.hboxlayout6 = QtGui.QHBoxLayout()
-        self.hboxlayout6.setObjectName("hboxlayout6")
-
+        self.hboxlayout6.setObjectName(_fromUtf8("hboxlayout6"))
         self.label_6 = QtGui.QLabel(self.groupBox_2)
-        self.label_6.setObjectName("label_6")
+        self.label_6.setObjectName(_fromUtf8("label_6"))
         self.hboxlayout6.addWidget(self.label_6)
-
         self.lineWidth = QtGui.QDoubleSpinBox(self.groupBox_2)
         self.lineWidth.setSingleStep(0.1)
-        self.lineWidth.setProperty("value",QtCore.QVariant(0.5))
-        self.lineWidth.setObjectName("lineWidth")
+        self.lineWidth.setProperty(_fromUtf8("value"), 0.5)
+        self.lineWidth.setObjectName(_fromUtf8("lineWidth"))
         self.hboxlayout6.addWidget(self.lineWidth)
         self.vboxlayout4.addLayout(self.hboxlayout6)
-
         self.hboxlayout7 = QtGui.QHBoxLayout()
-        self.hboxlayout7.setObjectName("hboxlayout7")
-
+        self.hboxlayout7.setObjectName(_fromUtf8("hboxlayout7"))
         self.label_7 = QtGui.QLabel(self.groupBox_2)
-        self.label_7.setObjectName("label_7")
+        self.label_7.setObjectName(_fromUtf8("label_7"))
         self.hboxlayout7.addWidget(self.label_7)
-
         self.lineColour = QtGui.QPushButton(self.groupBox_2)
+        self.lineColour.setText(_fromUtf8(""))
         self.lineColour.setFlat(False)
-        self.lineColour.setObjectName("lineColour")
+        self.lineColour.setObjectName(_fromUtf8("lineColour"))
         self.hboxlayout7.addWidget(self.lineColour)
         self.vboxlayout4.addLayout(self.hboxlayout7)
         self.vboxlayout3.addWidget(self.groupBox_2)
-
-        spacerItem3 = QtGui.QSpacerItem(20,40,QtGui.QSizePolicy.Minimum,QtGui.QSizePolicy.Expanding)
+        spacerItem3 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.vboxlayout3.addItem(spacerItem3)
-
         self.hboxlayout8 = QtGui.QHBoxLayout()
-        self.hboxlayout8.setObjectName("hboxlayout8")
-
-        spacerItem4 = QtGui.QSpacerItem(40,20,QtGui.QSizePolicy.Expanding,QtGui.QSizePolicy.Minimum)
+        self.hboxlayout8.setObjectName(_fromUtf8("hboxlayout8"))
+        spacerItem4 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.hboxlayout8.addItem(spacerItem4)
-
         self.applyStyle = QtGui.QPushButton(self.layerStyleTab)
-        self.applyStyle.setObjectName("applyStyle")
+        self.applyStyle.setObjectName(_fromUtf8("applyStyle"))
         self.hboxlayout8.addWidget(self.applyStyle)
         self.vboxlayout3.addLayout(self.hboxlayout8)
-
         self.hboxlayout9 = QtGui.QHBoxLayout()
-        self.hboxlayout9.setObjectName("hboxlayout9")
-
-        spacerItem5 = QtGui.QSpacerItem(40,14,QtGui.QSizePolicy.Expanding,QtGui.QSizePolicy.Minimum)
+        self.hboxlayout9.setObjectName(_fromUtf8("hboxlayout9"))
+        spacerItem5 = QtGui.QSpacerItem(40, 14, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.hboxlayout9.addItem(spacerItem5)
-
         self.brewerInfo = QtGui.QPushButton(self.layerStyleTab)
-
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum,QtGui.QSizePolicy.Fixed)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.brewerInfo.sizePolicy().hasHeightForWidth())
         self.brewerInfo.setSizePolicy(sizePolicy)
-        self.brewerInfo.setMaximumSize(QtCore.QSize(16777215,17))
-
+        self.brewerInfo.setMaximumSize(QtCore.QSize(16777215, 17))
         font = QtGui.QFont()
         font.setPointSize(8)
         self.brewerInfo.setFont(font)
-        self.brewerInfo.setObjectName("brewerInfo")
+        self.brewerInfo.setObjectName(_fromUtf8("brewerInfo"))
         self.hboxlayout9.addWidget(self.brewerInfo)
         self.vboxlayout3.addLayout(self.hboxlayout9)
-        self.processTabs.addTab(self.layerStyleTab,"")
+        self.processTabs.addTab(self.layerStyleTab, _fromUtf8(""))
         self.vboxlayout.addWidget(self.processTabs)
-
         self.buttonBox = QtGui.QDialogButtonBox(Dialog)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Close|QtGui.QDialogButtonBox.Help|QtGui.QDialogButtonBox.NoButton)
-        self.buttonBox.setObjectName("buttonBox")
+        self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
         self.vboxlayout.addWidget(self.buttonBox)
         self.label_8.setBuddy(self.layerName)
         self.label_9.setBuddy(self.fieldName)
@@ -231,31 +187,31 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
         self.processTabs.setCurrentIndex(0)
-        QtCore.QObject.connect(self.buttonBox,QtCore.SIGNAL("accepted()"),Dialog.accept)
-        QtCore.QObject.connect(self.buttonBox,QtCore.SIGNAL("rejected()"),Dialog.reject)
+        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), Dialog.accept)
+        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("rejected()")), Dialog.reject)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-        Dialog.setTabOrder(self.processTabs,self.layerName)
-        Dialog.setTabOrder(self.layerName,self.fieldName)
-        Dialog.setTabOrder(self.fieldName,self.saveDotFile)
-        Dialog.setTabOrder(self.saveDotFile,self.algorithm)
-        Dialog.setTabOrder(self.algorithm,self.computeColouring)
-        Dialog.setTabOrder(self.computeColouring,self.nowDoStyle)
-        Dialog.setTabOrder(self.nowDoStyle,self.buttonBox)
-        Dialog.setTabOrder(self.buttonBox,self.colourScheme)
-        Dialog.setTabOrder(self.colourScheme,self.lineType)
-        Dialog.setTabOrder(self.lineType,self.lineWidth)
-        Dialog.setTabOrder(self.lineWidth,self.lineColour)
-        Dialog.setTabOrder(self.lineColour,self.applyStyle)
-        Dialog.setTabOrder(self.applyStyle,self.brewerInfo)
+        Dialog.setTabOrder(self.processTabs, self.layerName)
+        Dialog.setTabOrder(self.layerName, self.fieldName)
+        Dialog.setTabOrder(self.fieldName, self.saveDotFile)
+        Dialog.setTabOrder(self.saveDotFile, self.algorithm)
+        Dialog.setTabOrder(self.algorithm, self.computeColouring)
+        Dialog.setTabOrder(self.computeColouring, self.nowDoStyle)
+        Dialog.setTabOrder(self.nowDoStyle, self.buttonBox)
+        Dialog.setTabOrder(self.buttonBox, self.colourScheme)
+        Dialog.setTabOrder(self.colourScheme, self.lineType)
+        Dialog.setTabOrder(self.lineType, self.lineWidth)
+        Dialog.setTabOrder(self.lineWidth, self.lineColour)
+        Dialog.setTabOrder(self.lineColour, self.applyStyle)
+        Dialog.setTabOrder(self.applyStyle, self.brewerInfo)
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QtGui.QApplication.translate("Dialog", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
         self.label_8.setText(QtGui.QApplication.translate("Dialog", "Layer", None, QtGui.QApplication.UnicodeUTF8))
         self.label_9.setText(QtGui.QApplication.translate("Dialog", "Field", None, QtGui.QApplication.UnicodeUTF8))
         self.saveDotFile.setToolTip(QtGui.QApplication.translate("Dialog", "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-        "p, li { white-space: pre-wrap; }\n"
-        "</style></head><body style=\" font-family:\'Sans Serif\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-        "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Save the adjacency graph as a DOT format file.</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Sans Serif\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Save the adjacency graph as a DOT format file.</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.saveDotFile.setText(QtGui.QApplication.translate("Dialog", "Save DOT File", None, QtGui.QApplication.UnicodeUTF8))
         self.addAdjacency.setText(QtGui.QApplication.translate("Dialog", "Add Adjacency Layer", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("Dialog", "Select Algorithm:", None, QtGui.QApplication.UnicodeUTF8))

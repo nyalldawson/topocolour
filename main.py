@@ -16,17 +16,17 @@
 #    You should have received a copy of the GNU General Public License
 #    along with Rasterlang.  If not, see <http://www.gnu.org/licenses/>.
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
 from qgis.core import *
 from qgis.gui import *
+from PyQt4.QtCore import *
+from PyQt4.QtGui import *
 
 import resources_rc
 import getLayerField
 import mainDialog
 import utils
 
-class MainPlugin(object):
+class TopoColourPlugin(object):
   def __init__(self, iface):
     # Save a reference to the QGIS iface
     self.iface = iface

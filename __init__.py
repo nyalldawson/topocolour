@@ -16,26 +16,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with Topocolour.  If not, see <http://www.gnu.org/licenses/>.
 
-import ConfigParser
-import os.path
-p = ConfigParser.ConfigParser()
-here = os.path.join(os.path.dirname(__file__),"config.ini")
-p.read(here)
-
-def name():
-  return p.get('general','name')
-
-def description():
-  return p.get('general','description')
-
-def version():
-  return p.get('general','version')
-
-def qgisMinimumVersion():
-  return p.get("general","qgisMinimumVersion")
-
-
 def classFactory(iface):
-  from main import MainPlugin
-  return MainPlugin(iface)
+  from main import TopoColourPlugin
+  return TopoColourPlugin(iface)
 
