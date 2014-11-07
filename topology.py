@@ -1,10 +1,8 @@
-
+from qgis.core import *
+from qgis.gui import *
 
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
-
-from qgis.core import *
-from qgis.gui import *
 
 from graph import Graph
 
@@ -28,7 +26,7 @@ def compute(layer, fieldNum, idGraph  = False):
     fData = featureData(layer,fieldNum)
 
     for l1 in range(1,len(fData)):
-        a1 = fData[l1]['att']
+        a1 = fData[l1]['id']
         g1 = fData[l1]['geom']
 
         for l2 in range(l1):
@@ -38,7 +36,7 @@ def compute(layer, fieldNum, idGraph  = False):
             iop=iop+1
             g2 = fData[l2]['geom']
             if g1.intersects(g2):
-                a2 = fData[l2]['att']
+                a2 = fData[l2]['id']
                 s.addEdge(a1,a2)
                 s.addEdge(a2,a1)
                 if idGraph:
@@ -50,14 +48,11 @@ def compute(layer, fieldNum, idGraph  = False):
 
 def featureData(layer,fieldNum):
     fData = []
-    p = layer.dataProvider()
-    allAttrs = p.attributeIndexes()
-    p.select(allAttrs)
-    f = QgsFeature()
-    while p.nextFeature(f):
+    iter = layer.getFeatures()
+    for feature in iter:
         fData.append({
-                'id': f.id(),
-                'att': f.attributeMap()[fieldNum].toString(),
-                'geom': f.geometryAndOwnership()
+                'id': feature.id(),
+                'att': str(feature.attributes()[fieldNum]),
+                'geom': feature.geometryAndOwnership()
                 })
     return fData

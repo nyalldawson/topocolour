@@ -1,19 +1,17 @@
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-
 from qgis.core import *
 from qgis.gui import *
+
+from PyQt4.QtCore import *
+from PyQt4.QtGui import *
 
 from colourtabs import Ui_Dialog
 
 import topology
 import adjlayer
 import colouring
-import brewer
-import display
 
 class Form(QDialog,Ui_Dialog):
-    def __init__(self, iface, layer,fieldIndex, field):
+    def __init__(self, iface, layer, fieldIndex, field):
         QDialog.__init__(self)
         self.setupUi(self)
         self.iface = iface
@@ -21,35 +19,14 @@ class Form(QDialog,Ui_Dialog):
         self.fieldIndex = fieldIndex
         self.layerName.setText(layer.name())
         self.fieldName.setText(field.name())
-        QObject.connect(self.saveDotFile,SIGNAL("clicked()"),self.doSaveDotFile)
-        QObject.connect(self.addAdjacency,SIGNAL("clicked()"),self.doAddAdjacency)
-        QObject.connect(self.computeColouring,SIGNAL("clicked()"),self.doComputeColouring)
-        self.processTabs.setTabEnabled(0,True)
-        self.processTabs.setTabEnabled(1,False)
-        self.nowDoStyle.setEnabled(False)
-        QObject.connect(self.nowDoStyle,SIGNAL("clicked()"),self.doNowDoStyle)
-        self.processTabs.setCurrentIndex(0)
+        self.saveDotFile.clicked.connect(self.doSaveDotFile)
+        self.addAdjacency.clicked.connect(self.doAddAdjacency)
+        self.computeColouring.clicked.connect(self.doComputeColouring)
+        self.saveToFieldButton.clicked.connect(self.saveColours)
+        self.populateFieldCombo()
+        self.saveToFieldButton.setEnabled(False)
         for key,alg in colouring.algorithms.iteritems():
-            self.algorithm.addItem(alg['name'],QVariant(key))
-
-        # layer style tab setup
-        QObject.connect(self.applyStyle,SIGNAL("clicked()"),self.doApplyStyle)
-        QObject.connect(self.brewerInfo,SIGNAL("clicked()"),self.doBrewerInfo)
-
-        # line styles
-        self.lineType.addItem( QIcon( QgsSymbologyUtils.char2LinePixmap( "SolidLine" ) ), "Solid Line" , QVariant("SolidLine" ))
-        self.lineType.addItem( QIcon( QgsSymbologyUtils.char2LinePixmap( "DashLine" ) ), "Dash Line" , QVariant("DashLine" ))
-        self.lineType.addItem( QIcon( QgsSymbologyUtils.char2LinePixmap( "DotLine" ) ), "Dot Line" , QVariant("DotLine") )
-        self.lineType.addItem( QIcon( QgsSymbologyUtils.char2LinePixmap( "DashDotLine" ) ),  "Dash Dot Line" , QVariant("DashDotLine") )
-        self.lineType.addItem( QIcon( QgsSymbologyUtils.char2LinePixmap( "DashDotDotLine" ) ), "Dash Dot Dot Line" , QVariant("DashDotDotLine") )
-        self.lineType.addItem( QIcon( QgsSymbologyUtils.char2LinePixmap( "NoPen" ) ), "No Pen" , QVariant("NoPen") )
-        
-        # line colour dialog
-        QObject.connect(self.lineColour,SIGNAL("clicked()"),self.doLineColour)
-        self.setLineColourButton(QColor(0,0,0))
-
-        # button box
-        QObject.connect(self.buttonBox,SIGNAL("helpRequested()"),self.helpReq)
+            self.algorithm.addItem(alg['name'],key)
 
     def exec_(self):
         self.topology,self.idGraph = topology.compute(self.layer, self.fieldIndex, True)
@@ -58,27 +35,6 @@ class Form(QDialog,Ui_Dialog):
         else:
             self.graphDump.setText(self.topology.dump())
             QDialog.exec_(self)
-
-    def doApplyStyle(self):
-        name = str(self.colourScheme.currentText())
-        palette = brewer.palette(name,self.maxColours)
-        self.layer.r = QgsUniqueValueRenderer(QGis.Polygon)
-        self.layer.r.setClassificationField(self.fieldIndex)
-        for k,v in self.gColouring.iteritems():
-            self.layer.r.insertValue(k,makeSymbol(self,palette[v-1],k))
-            
-        self.layer.setRenderer(self.layer.r)
-        # redraw the map and refresh the legend
-        self.iface.mapCanvas().refresh()
-        self.iface.refreshLegend(self.layer)
-        QgsProject.instance().dirty(True)
-
-    def helpReq(self):
-        QMessageBox.information(None,"Topocolour Help",doc,QMessageBox.Ok)
-
-    def doBrewerInfo(self):
-        QMessageBox.information(None,"Topocolour brewer palettes",brewer.doc,QMessageBox.Ok)
-        #display.show(brewer.doc)
 
     def doSaveDotFile(self):
         f=QFileDialog.getSaveFileName(self,"Save DOT file","","DOT Files (*.dot)")
@@ -89,74 +45,34 @@ class Form(QDialog,Ui_Dialog):
         aLayer = adjlayer.make(self.layer,self.idGraph,self.fieldIndex)
         QgsMapLayerRegistry.instance().addMapLayer(aLayer)
 
-    def doNowDoStyle(self):
-        self.processTabs.setCurrentIndex(1)
-
     def doComputeColouring(self):
-        key = str(self.algorithm.itemData(self.algorithm.currentIndex()).toString())
+        key = str(self.algorithm.itemData(self.algorithm.currentIndex()))
         alg = colouring.algorithms[key]
         fnAlg = alg['code']
         self.gColouring = fnAlg(self.topology)
         self.maxColours = max(self.gColouring.values())
         self.layerCountLabel.setText(str(self.maxColours)+" colours needed")
-        ok = True
-        if ok:
-            self.setupColourSchemes()
-            self.nowDoStyle.setEnabled(True)
-            self.processTabs.setTabEnabled(1,True)
+        self.saveToFieldButton.setEnabled(True)
+    
+    def populateFieldCombo(self):
+        self.destFieldComboBox.clear()
+        for f in self.layer.pendingFields():
+            self.destFieldComboBox.addItem( f.name() )
+            
+    def saveColours(self):
+        destField = self.destFieldComboBox.currentText()
+        destFieldIdx = self.destFieldComboBox.currentIndex()
+        
+        reply = QMessageBox.question(self, 'Save colours', "Are you sure you want to save colour numbers to the " + destField + " field?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No )
+        if not reply == QMessageBox.Yes:
+            return
 
-
-    def doLineColour(self):
-        get = QColorDialog.getColor(QColor(255,255,255),self.iface.mapCanvas())
-        if get.isValid():
-            self.setLineColourButton(get)
-
-    def setLineColourButton(self,colour):
-        self.myLineColour = colour
-        self.lineColour.setStyleSheet(
-            "QPushButton { background-color: %s }"
-            "QPushButton:pressed { background-color: %s}" % (colour.name(),colour.light(125).name())
-            )
-
-
-    def setupColourSchemes(self):
-        self.colourScheme.setIconSize(QSize(64,16))
-        for name,p in brewer.palettes.iteritems():
-            if p['limits'][1] >= self.maxColours:
-                self.colourScheme.addItem(QIcon(brewer.iconName(name)),name)
-        # TODO: make sure we have at least one colour scheme
-
-    def myfield(self):
-        p = self.layer.dataProvider()
-        name = p.fields()[self.fieldIndex].name()
-        return name
-
-def makeSymbol(self, rgb, v):
-    s = QgsSymbol(QGis.Polygon,v,"","")
-    s.setFillColor(QColor(rgb[0],rgb[1],rgb[2]))
-    s.setFillStyle(Qt.SolidPattern)
-    s.setColor(self.myLineColour)
-    #s.setColor(QColor(0,0,0))
-
-    myLineStyle = self.lineType.itemData( self.lineType.currentIndex(), Qt.UserRole ).toString()
-    s.setLineStyle( QgsSymbologyUtils.qString2PenStyle( myLineStyle ) )
-
-    s.setLineWidth(self.lineWidth.value())
-
-    return s
-
-doc = """
-
-***TopoColour***
-
-This plugin colours polygon layers so that no adjacent polygons are the same colour.
-
-First choose a layer and attribute value.
-
-Then choose a colouring algorithm from the drop down and compute the colouring.
-
-Switch to the next tab, and choose a palette.
-
-For more information, go to http://www.maths.lancs.ac.uk/~rowlings/Qgis/Plugins/Documentation/topocolour/
-
-"""
+        colorAttributes = {}
+        for id, color in self.gColouring.iteritems():
+            colorAttributes[id] = { destFieldIdx: color }
+            
+        self.layer.dataProvider().changeAttributeValues( colorAttributes )   
+        
+        self.layer.setCacheImage(None)
+        self.iface.mapCanvas().refresh()
+        QMessageBox.information(self, 'Save colours', "Colour numbers saved to " + destField + "!", QMessageBox.Ok )

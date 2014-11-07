@@ -1,22 +1,20 @@
-
+from qgis.core import *
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
-
 from chooser import Ui_Dialog
-
 
 LAYER = 1002
 FIELD = 1003
 
 class LayerItem(QTreeWidgetItem):
     def __init__(self,parent,layer):
-        QTreeWidgetItem.__init__(self,parent,QStringList(layer.name()),LAYER)
+        QTreeWidgetItem.__init__(self,parent,[layer.name()],LAYER)
         self.layer = layer
 
 class FieldItem(QTreeWidgetItem):
     def __init__(self,parent,layer,fieldIndex,field):
-        QTreeWidgetItem.__init__(self,parent,QStringList(field.name()),FIELD)
+        QTreeWidgetItem.__init__(self,parent,[field.name()],FIELD)
         self.layer = layer
         self.fieldIndex = fieldIndex
         self.field = field
@@ -34,8 +32,8 @@ class Chooser(QDialog, Ui_Dialog):
         self.items = []
         for layer in layers:
             item = LayerItem(None, layer)
-            fields = layer.dataProvider().fields()
-            for k,v in zip(fields.keys(),fields.values()):
+            fields = layer.pendingFields()
+            for k,v in enumerate(fields):
                 jtem = FieldItem(item, layer, k, v)
             self.items.append(item)
         layerFieldsTree.insertTopLevelItems(0, self.items);
