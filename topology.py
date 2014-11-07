@@ -41,6 +41,12 @@ def compute(layer, fieldNum, idGraph  = False):
                 s.addEdge(a2,a1)
                 if idGraph:
                     ig.addEdge(fData[l1]['id'],fData[l2]['id'])
+                    
+    iter = layer.getFeatures()
+    for feature in iter:
+        if not s.nodeEdge.has_key( feature.id() ):
+            s.addEdge( feature.id(), None )
+    
     if not idGraph:
         return s
     else:
