@@ -49,7 +49,7 @@ class Form(QDialog,Ui_Dialog):
         key = str(self.algorithm.itemData(self.algorithm.currentIndex()))
         alg = colouring.algorithms[key]
         fnAlg = alg['code']
-        self.gColouring = fnAlg(self.topology)
+        self.gColouring = fnAlg(self.topology, False)
         self.maxColours = max(self.gColouring.values())
         self.layerCountLabel.setText(str(self.maxColours)+" colours needed")
         self.saveToFieldButton.setEnabled(True)
